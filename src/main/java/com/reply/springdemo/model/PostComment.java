@@ -19,9 +19,9 @@ public class PostComment {
     @Id
     private Long id;
 
-    //@ManyToOne
-    //@JoinColumn(name = "parent_id")
-   // private PostComment parent;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private PostComment parent;
 
     private String review;
     @Enumerated(EnumType.STRING)

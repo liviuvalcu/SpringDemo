@@ -10,6 +10,6 @@ import java.util.List;
 public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
 
 
-    @Query(value = "select comment from PostComment comment")
+     @Query(value = "select comment from PostComment comment")
      List<PostComment> findAllPaginated(Pageable pageable);
 }

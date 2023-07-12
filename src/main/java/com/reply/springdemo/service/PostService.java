@@ -20,7 +20,7 @@ import java.util.Optional;
 public class PostService {
 
    // @Autowired
-    //@Lazy
+   //@Lazy
     private  PostCommentService postCommentService;
 
     @Value("${application.name}")
@@ -31,12 +31,11 @@ public class PostService {
     //@Value("#{systemProperties['']}")
     //@Value("#{systemEnvironment['']}")
     //@Value("#{environment['']}")
-    private Status acceptedStatus;
+    public Status acceptedStatus;
 
     public PostService(PostCommentService postCommentService){
         this.postCommentService = new PostCommentService();
         this.name = name;
-        System.out.println(acceptedStatus);
     }
 
    // public PostService(){}

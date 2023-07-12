@@ -50,6 +50,7 @@ public class PostCommentService implements InitializingBean {
 
     public ResponseEntity<List<PostComment>> getAllPostCommentPaginated(Integer page, Integer quantity){
         Sort sort = Sort.by("status").ascending();
+
         return new ResponseEntity<>(postCommentRepo.findAllPaginated(PageRequest.of(page, quantity, sort)), HttpStatus.OK);
     }
 

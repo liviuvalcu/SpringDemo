@@ -3,7 +3,6 @@ package com.reply.springdemo.controller;
 import com.reply.springdemo.model.PostComment;
 import com.reply.springdemo.service.PostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,15 +24,13 @@ public class PostController {
     @GetMapping("/postCommentsById")
     public List<PostComment> getAllPostCommentsById(@RequestParam(value = "id", required = false) String id){
         System.out.println("ID : " + id);
-        return null;
-        //return postCommentService.getAllPostComment();
+        return postCommentService.getAllPostComment().getBody();
     }
 
-   // @GetMapping({"/postCommentsById/{id}" , "/postCommentsById/"})
+    @GetMapping({"/postCommentsById/{id}" , "/postCommentsById/"})
     public ResponseEntity<List<PostComment>> getAllPostCommentsById_(@PathVariable Optional<String> id){
         System.out.println("ID : " + id.orElse("no ID"));
         return postCommentService.getAllPostComment();
-       // return postCommentService.getAllPostComment();
     }
 
 }
