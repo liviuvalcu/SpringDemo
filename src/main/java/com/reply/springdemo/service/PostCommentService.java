@@ -57,7 +57,7 @@ public class PostCommentService implements InitializingBean {
     }
 
 
-    public PostComment selectByIdPaginated(Long id, Pageable pageable){
+    public List<PostComment> selectByIdPaginated(Long id, Pageable pageable){
         return postCommentRepo.selectByIdPaginated(id, pageable);
     }
 
