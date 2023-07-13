@@ -3,6 +3,7 @@ package com.reply.springdemo.service;
 import com.reply.springdemo.PostCommentRepo;
 import com.reply.springdemo.model.PostComment;
 import com.reply.springdemo.Status;
+import com.reply.springdemo.repository.PostCommentRepo;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.InitializingBean;

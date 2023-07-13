@@ -1,4 +1,4 @@
-package com.reply.springdemo;
+package com.reply.springdemo.repository;
 
 import com.reply.springdemo.model.PostComment;
 import org.springframework.data.domain.Pageable;
