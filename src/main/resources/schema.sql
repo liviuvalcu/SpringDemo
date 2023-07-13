@@ -1,4 +1,4 @@
-drop table POST_COMMENT;
+drop table IF EXISTS POST_COMMENT;
 CREATE TABLE post_comment
 (
     id         BIGINT       NOT NULL,
