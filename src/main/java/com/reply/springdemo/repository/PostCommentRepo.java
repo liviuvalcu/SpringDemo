@@ -24,4 +24,6 @@ public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
 
      List<PostComment> findDistinctByVotes(@Param("votes") Integer votes);
 
+     @Query(value = "SELECT * FROM POST_COMMENTS WHERE review LIKE %:review%", nativeQuery = true)
+     List<PostComment> findAllByReview(@Param("review") String review);
 }
