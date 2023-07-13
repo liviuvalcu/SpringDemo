@@ -8,7 +8,9 @@ import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,23 @@ public class PostCommentService implements InitializingBean {
         Sort sort = Sort.by("status").ascending();
 
         return new ResponseEntity<>(postCommentRepo.findAllPaginated(PageRequest.of(page, quantity, sort)), HttpStatus.OK);
+    }
+
+
+    public PostComment selectByIdPaginated(Long id, Pageable pageable){
+        return postCommentRepo.selectByIdPaginated(id, pageable);
+    }
+
+    public PostComment selectById(Long id){
+        return postCommentRepo.selectById(id);
+    }
+
+    public List<PostComment> findByStatus(String status){
+        return postCommentRepo.findByStatus(status);
+    }
+
+    List<PostComment> findDistinctByVotes( Integer votes){
+        return postCommentRepo.findDistinctByVotes(votes);
     }
 
 }
