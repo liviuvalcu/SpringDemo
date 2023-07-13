@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class PostCommentService implements InitializingBean {
     private PostCommentRepo postCommentRepo;
 
     @PostConstruct
-    public void postConstruct(){
+    public void postConstruct() {
         System.out.println("PostCommentService PC");
     }
 
@@ -37,40 +38,45 @@ public class PostCommentService implements InitializingBean {
         System.out.println("afterPropertiesSet PC");
     }
 
-    public void init(){
+    public void init() {
         System.out.println("init PC");
     }
 
     @PreDestroy
-    public void destroy(){
+    public void destroy() {
         System.out.println(" PostCommentService - PD");
     }
 
-    public ResponseEntity<List<PostComment>> getAllPostComment(){
-      return new ResponseEntity<>(postCommentRepo.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<PostComment>> getAllPostComment() {
+        return new ResponseEntity<>(postCommentRepo.findAll(), HttpStatus.OK);
     }
 
-    public ResponseEntity<List<PostComment>> getAllPostCommentPaginated(Integer page, Integer quantity){
+    public ResponseEntity<List<PostComment>> getAllPostCommentPaginated(Integer page, Integer quantity) {
         Sort sort = Sort.by("status").ascending();
 
         return new ResponseEntity<>(postCommentRepo.findAllPaginated(PageRequest.of(page, quantity, sort)), HttpStatus.OK);
     }
 
 
-    public PostComment selectByIdPaginated(Long id, Pageable pageable){
-        return postCommentRepo.selectByIdPaginated(id, pageable);
+    public ResponseEntity<PostComment> selectByIdPaginated(Long id, Integer page, Integer quantity) {
+
+        Sort sort = Sort.by("status").ascending();
+
+        return new ResponseEntity<>(postCommentRepo.selectByIdPaginated(id,PageRequest.of(page, quantity, sort)), HttpStatus.OK);
+
     }
 
-    public PostComment selectById(Long id){
-        return postCommentRepo.selectById(id);
+    public ResponseEntity<PostComment> selectById(Long id) {
+        return new ResponseEntity<>(postCommentRepo.selectById(id), HttpStatus.OK);
     }
 
-    public List<PostComment> findByStatus(String status){
-        return postCommentRepo.findByStatus(status);
+    public ResponseEntity<List<PostComment>> findByStatus(String status) {
+        return new ResponseEntity<>(postCommentRepo.findByStatus(status), HttpStatus.OK);
     }
 
-    List<PostComment> findDistinctByVotes( Integer votes){
-        return postCommentRepo.findDistinctByVotes(votes);
+    public ResponseEntity<List<PostComment>> findDistinctByVotes(Integer votes) {
+
+        return new ResponseEntity<>(postCommentRepo.findDistinctByVotes(votes),HttpStatus.OK);
     }
 
 }
