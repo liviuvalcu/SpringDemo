@@ -73,4 +73,7 @@ public class PostCommentService implements InitializingBean {
         return postCommentRepo.findDistinctByVotes(votes);
     }
 
+    public List<PostComment> findAllByReview(String review) {
+        return postCommentRepo.findAllByReview(review);
+    }
 }

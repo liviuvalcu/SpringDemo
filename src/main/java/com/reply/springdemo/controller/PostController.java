@@ -33,4 +33,9 @@ public class PostController {
         return postCommentService.getAllPostComment();
     }
 
+    @GetMapping("/postCommentsByReview")
+    public ResponseEntity<List<PostComment>> findAllByReview(@RequestParam String review) {
+        System.out.println("ID:" + review);
+        return ResponseEntity.ok(postCommentService.findAllByReview(review));
+    }
 }
