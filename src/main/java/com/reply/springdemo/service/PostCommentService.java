@@ -73,4 +73,12 @@ public class PostCommentService implements InitializingBean {
         return postCommentRepo.findDistinctByVotes(votes);
     }
 
+    public void deleteById (Long id){
+        postCommentRepo.deleteById(id);
+    }
+
+    public PostComment selectByCreationDate(LocalDateTime localDateTime){
+       return postCommentRepo.selectByCreationDate(localDateTime);
+    }
+
 }

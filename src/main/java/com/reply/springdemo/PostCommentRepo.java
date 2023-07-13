@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
@@ -23,5 +24,11 @@ public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
      List<PostComment> selectByIdPaginated(@Param("id") Long id, Pageable pageable);
 
      List<PostComment> findDistinctByVotes(@Param("votes") Integer votes);
+
+     void deleteById(Long id);
+
+
+     PostComment selectByCreationDate(@Param("localDateTime") LocalDateTime localDateTime);
+
 
 }

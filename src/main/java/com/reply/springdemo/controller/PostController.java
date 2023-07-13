@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,4 +34,15 @@ public class PostController {
         return postCommentService.getAllPostComment();
     }
 
+    @DeleteMapping("/deleteById")
+    public void deleteById(@RequestParam(value = "id") Long id){
+        System.out.println("ID : " + id);
+        postCommentService.deleteById(id);
+
+    }
+
+    @GetMapping({"postCommentsById/{localDateTime}"})
+    public PostComment getByCreationDate(@RequestParam(value = "localDateTime") LocalDateTime localDateTime){
+        return postCommentService.selectByCreationDate(localDateTime);
+    }
 }
