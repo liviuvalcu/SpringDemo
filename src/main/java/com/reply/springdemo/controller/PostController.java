@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,5 +77,16 @@ public class PostController {
     @Secured(value = "ROLE_USER")
     public PostComment getAllPostCommentsByIdJdbc(@RequestParam(value = "id", required = false) String id){
         return postCommentService.selectById(id);
+    }
+    @DeleteMapping("/deleteById")
+    public void deleteById(@RequestParam(value = "id") Long id){
+        System.out.println("ID : " + id);
+        postCommentService.deleteById(id);
+
+    }
+
+    @GetMapping({"postCommentsById/{localDateTime}"})
+    public ResponseEntity<PostComment> getByCreationDate(@RequestParam(value = "localDateTime") LocalDateTime localDateTime){
+        return postCommentService.selectByCreationDate(localDateTime);
     }
 }
