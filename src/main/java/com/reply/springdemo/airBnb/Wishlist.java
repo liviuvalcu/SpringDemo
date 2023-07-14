@@ -1,5 +1,6 @@
 package com.reply.springdemo.airBnb;
 
+import com.reply.airbnbdemo.model.id.WishlistId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "wishlist")
 public class Wishlist {
+
     @EmbeddedId
     private WishlistId id;
 
@@ -26,7 +28,7 @@ public class Wishlist {
     @Column(name = "Privacy")
     private Character privacy;
 
-    @OneToMany(mappedBy = "wishlist")
+    @OneToMany(mappedBy = "wishlistName")
     private Set<Propertyincludedinwishlist> propertyincludedinwishlists = new LinkedHashSet<>();
 
 }

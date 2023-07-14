@@ -98,31 +98,31 @@ public class Propertylisting {
     @Column(name = "TaxRate", precision = 2, scale = 1)
     private BigDecimal taxRate;
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Availablebookingslot> availablebookingslots = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "propertyID")
     private Set<Bedroom> bedrooms = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Photoforpropertyreview> photoforpropertyreviews = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Propertyincludedinwishlist> propertyincludedinwishlists = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Amenity> amenities = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Reviewforproperty> reviewforproperties = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Category> categories = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Propertyphoto> propertyphotos = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "propertylisting")
+    @OneToMany(mappedBy = "pid")
     private Set<Houserule> houserules = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "pid")

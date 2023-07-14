@@ -16,6 +16,7 @@ import java.util.Objects;
 @Embeddable
 public class AvailablebookingslotId implements Serializable {
     private static final long serialVersionUID = -2027143669135446923L;
+
     @NotNull
     @Column(name = "PID", nullable = false)
     private Integer pid;

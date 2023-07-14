@@ -1,5 +1,6 @@
 package com.reply.springdemo.airBnb;
 
+import com.reply.airbnbdemo.model.id.PhotoforpropertyreviewId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

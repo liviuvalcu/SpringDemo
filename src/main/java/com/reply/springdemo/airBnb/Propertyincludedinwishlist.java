@@ -1,5 +1,6 @@
 package com.reply.springdemo.airBnb;
 
+import com.reply.airbnbdemo.model.id.PropertyincludedinwishlistId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,10 +29,15 @@ public class Propertyincludedinwishlist {
     @JoinColumn(name = "AirBnBUID", nullable = false)
     private Guest airBnBUID;
 
-    @MapsId("wishlistName")
+    @MapsId("id")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "WishlistName", nullable = false, referencedColumnName = "WishlistName")
+
+
+    @PrimaryKeyJoinColumns(value = {
+            @PrimaryKeyJoinColumn(name = "WishlistName", referencedColumnName = "AirBnBUID"),
+            @PrimaryKeyJoinColumn(name = "WishlistName", referencedColumnName = "WishlistName")
+    })
     private Wishlist wishlistName;
 
     @Column(name = "CheckInDate")

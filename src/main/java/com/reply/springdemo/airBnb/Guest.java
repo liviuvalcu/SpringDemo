@@ -38,22 +38,22 @@ public class Guest {
     @JoinColumn(name = "CreditCardNum", nullable = false)
     private Creditcard creditCardNum;
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guestID")
     private Set<Photoforpropertyreview> photoforpropertyreviews = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "airBnBUID")
     private Set<Propertyincludedinwishlist> propertyincludedinwishlists = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "airBnBUID")
     private Set<Wishlist> wishlists = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guestID")
     private Set<Message> messages = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guestID")
     private Set<Reviewforproperty> reviewforproperties = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guestUID")
     private Set<Reviewforuser> reviewforusers = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "guestUID")

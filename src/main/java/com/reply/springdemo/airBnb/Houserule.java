@@ -1,5 +1,6 @@
 package com.reply.springdemo.airBnb;
 
+import com.reply.airbnbdemo.model.id.HouseruleId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

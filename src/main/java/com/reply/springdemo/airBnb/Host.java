@@ -41,13 +41,13 @@ public class Host {
     @JoinColumn(name = "BankAccountNumber", nullable = false)
     private Bankaccount bankAccountNumber;
 
-    @OneToMany(mappedBy = "host")
+    @OneToMany(mappedBy = "hostUID")
     private Set<Message> messages = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "hid")
     private Set<Propertylisting> propertylistings = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "host")
+    @OneToMany(mappedBy = "hostUID")
     private Set<Reviewforuser> reviewforusers = new LinkedHashSet<>();
 
 }
