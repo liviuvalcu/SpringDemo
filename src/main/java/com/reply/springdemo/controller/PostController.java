@@ -1,5 +1,6 @@
 package com.reply.springdemo.controller;
 
+import com.reply.springdemo.dto.PostCommentDto;
 import com.reply.springdemo.model.PostComment;
 import com.reply.springdemo.service.PostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;

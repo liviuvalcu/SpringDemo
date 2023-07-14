@@ -77,7 +77,7 @@ public class PostCommentService implements InitializingBean {
     }
 
 
-    public ResponseEntity<PostComment> selectByIdPaginated(Long id, Integer page, Integer quantity) {
+    public ResponseEntity<List<PostComment>> selectByIdPaginated(Long id, Integer page, Integer quantity) {
 
         Sort sort = Sort.by("status").ascending();
 
