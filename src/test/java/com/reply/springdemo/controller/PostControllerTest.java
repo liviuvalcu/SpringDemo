@@ -34,7 +34,7 @@ class PostControllerTest {
 
     @Test
     void getAllPostComment() throws Exception {
-        when(postCommentService.getAllPostComment()).thenReturn(List.of(PostComment.builder().build()));
+        //when(postCommentService.getAllPostComment()).thenReturn(List.of(PostComment.builder().build()));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/posts/postComments").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -44,7 +44,7 @@ class PostControllerTest {
 
     @Test
     void getAllPostCommentsById() throws Exception {
-        when(postCommentService.getAllPostComment()).thenReturn(List.of(PostComment.builder().build()));
+       // when(postCommentService.getAllPostComment()).thenReturn(List.of(PostComment.builder().build()));
         String [] beans = context.getBeanDefinitionNames();
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/posts/postCommentsById")
                         //.param("id", "201")

@@ -1,8 +1,10 @@
 package com.reply.springdemo.controller;
 
+import com.reply.springdemo.dto.PostCommentDto;
 import com.reply.springdemo.model.PostComment;
 import com.reply.springdemo.service.PostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +36,22 @@ public class PostController {
         return postCommentService.getAllPostComment();
     }
 
+    @GetMapping("/postCommentsByReview")
+    public ResponseEntity<List<PostCommentDto>> findAllByReview(@RequestParam String review) {
+        System.out.println("ID:" + review);
+        return ResponseEntity.ok(postCommentService.findAllByReview(review));
+    }
+
+    @PostMapping("/insertComment")
+    public ResponseEntity<String> insert(@RequestParam(value = "review") String review){
+        postCommentService.insertCommentWithJdbcTemplate(review);
+       return new ResponseEntity<>("Inserted", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/postCommentsByIdJdbc")
+    public PostComment getAllPostCommentsByIdJdbc(@RequestParam(value = "id", required = false) String id){
+        return postCommentService.selectById(id);
+    }
     @DeleteMapping("/deleteById")
     public void deleteById(@RequestParam(value = "id") Long id){
         System.out.println("ID : " + id);
