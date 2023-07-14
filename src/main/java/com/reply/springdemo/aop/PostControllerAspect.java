@@ -5,8 +5,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class PostControllerAspect {
 
    // @Before("this(com.reply.springdemo.controller.PostController)")
@@ -33,7 +33,7 @@ public class PostControllerAspect {
     @Around("getAll() || findAll()")
     public  void around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Before Method");
-        joinPoint.proceed();
+        //joinPoint.proceed();
        try {
            joinPoint.proceed();
        }catch (Throwable t){

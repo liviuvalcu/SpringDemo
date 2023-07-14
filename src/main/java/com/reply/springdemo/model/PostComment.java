@@ -26,6 +26,7 @@ public class PostComment {
     private String review;
     @Enumerated(EnumType.STRING)
     private Status status;
+    @Column(name = "CREATION_DATE")
     private LocalDateTime creationDate;
     private int votes;
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -26,6 +27,12 @@ public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
      List<PostComment> selectByIdPaginated(@Param("id") Long id, Pageable pageable);
 
      List<PostComment> findDistinctByVotes(@Param("votes") Integer votes);
+
+     void deleteById(Long id);
+
+     @Query(value = "SELECT pc FROM POST_COMMENT pc WHERE pc.localDateTime LIKE %:localDateTime%", nativeQuery = true)
+     PostComment selectByCreationDate(@Param("localDateTime") LocalDateTime localDateTime);
+
 
      @Query(value = "SELECT * FROM POST_COMMENT pc WHERE pc.review LIKE %:review%", nativeQuery = true)
      List<PostComment> findAllByReview(@Param("review") String review);

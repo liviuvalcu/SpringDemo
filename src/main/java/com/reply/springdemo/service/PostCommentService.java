@@ -160,4 +160,12 @@ public class PostCommentService implements InitializingBean {
 
         return  jdbcTemplate.queryForObject(query, new Object []{id}, new PostCommentRowMapper());
     }
+    public void deleteById (Long id){
+        postCommentRepo.deleteById(id);
+    }
+
+    public ResponseEntity<PostComment> selectByCreationDate(LocalDateTime localDateTime){
+       return new ResponseEntity<>(postCommentRepo.selectByCreationDate(localDateTime), HttpStatus.OK);
+    }
+
 }
