@@ -158,8 +158,8 @@ public class PostCommentService implements InitializingBean {
         postCommentRepo.deleteById(id);
     }
 
-    public PostComment selectByCreationDate(LocalDateTime localDateTime){
-       return postCommentRepo.selectByCreationDate(localDateTime);
+    public ResponseEntity<PostComment> selectByCreationDate(LocalDateTime localDateTime){
+       return new ResponseEntity<>(postCommentRepo.selectByCreationDate(localDateTime), HttpStatus.OK);
     }
 
 }

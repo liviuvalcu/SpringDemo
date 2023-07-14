@@ -29,7 +29,7 @@ public interface PostCommentRepo extends JpaRepository<PostComment, Long> {
 
      void deleteById(Long id);
 
-
+     @Query(value = "SELECT pc FROM POST_COMMENT pc WHERE pc.localDateTime LIKE %:localDateTime%", nativeQuery = true)
      PostComment selectByCreationDate(@Param("localDateTime") LocalDateTime localDateTime);
 
 

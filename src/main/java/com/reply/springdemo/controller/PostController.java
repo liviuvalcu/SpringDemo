@@ -60,7 +60,7 @@ public class PostController {
     }
 
     @GetMapping({"postCommentsById/{localDateTime}"})
-    public PostComment getByCreationDate(@RequestParam(value = "localDateTime") LocalDateTime localDateTime){
+    public ResponseEntity<PostComment> getByCreationDate(@RequestParam(value = "localDateTime") LocalDateTime localDateTime){
         return postCommentService.selectByCreationDate(localDateTime);
     }
 }
